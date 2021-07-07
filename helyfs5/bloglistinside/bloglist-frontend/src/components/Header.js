@@ -7,6 +7,7 @@ import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
 
 import { logoutUser } from '../actions'
+import { grey } from 'jest-matcher-utils/node_modules/chalk'
 
 
 const Header = () => {
@@ -18,7 +19,7 @@ const Header = () => {
     }
 
     const padding = {
-        padding: 5
+        padding: 5,
     }
 
     return (

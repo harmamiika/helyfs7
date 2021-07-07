@@ -20,7 +20,7 @@ const BlogList = ({ user }) => {
         setShowComponent(!showComponent)
     }
 
-    const handleLike = async (blog, likes) => {
+    const handleLike = (blog, likes) => {
         const updatedBlog = { ...blog, likes }
         dispatch(likeBlog(updatedBlog))
     }

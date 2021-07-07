@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import blogsService from '../services/blogs'
+import Button from 'react-bootstrap/Button'
 
 const CreateBlog = ({ onCreate }) => {
     const [title, setTitle] = useState('')
@@ -21,8 +21,9 @@ const CreateBlog = ({ onCreate }) => {
         setShowComponent(!showComponent)
     }
 
-    //field onchange
-
+    const componentPadding = {
+        paddingTop: '10px'
+    }
 
 
     const renderForm = () => {
@@ -31,13 +32,13 @@ const CreateBlog = ({ onCreate }) => {
                 <div>
                     <h2>create new</h2>
                     <form onSubmit={handleFormSubmit}>
-                        <div>title: <input id='title' type='text' name='title' value={title} 
+                        <div>title: <input id='title' type='text' name='title' value={title}
                             onChange={({ target }) => setTitle(target.value)} ></input></div>
-                        <div>author: <input id='author' type='text' name='author' value={author} 
+                        <div>author: <input id='author' type='text' name='author' value={author}
                             onChange={({ target }) => setAuthor(target.value)} ></input></div>
-                        <div>url: <input type='text' name='url' value={url} 
+                        <div>url: <input type='text' name='url' value={url}
                             onChange={({ target }) => setUrl(target.value)} ></input></div>
-                        <button>create</button>
+                        <button variant='primary' >create</button>
                     </form>
                 </div>
             )
@@ -45,11 +46,11 @@ const CreateBlog = ({ onCreate }) => {
     }
 
     return (
-        <div>
+        <div style={componentPadding}>
             <div>
                 {renderForm()}
             </div>
-            <button onClick={() => setShowComponent(!showComponent)}>{showComponent ? 'cancel' : 'create blog'}</button>
+            <Button variant='secondary' onClick={() => setShowComponent(!showComponent)}>{showComponent ? 'cancel' : 'create blog'}</Button>
         </div>
     )
 }

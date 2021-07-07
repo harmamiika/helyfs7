@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
 
+import { useSelector } from 'react-redux'
+
 import { deleteBlog, displayNotification } from '../actions'
 
 const Blog = ({ blog, onLike = () => { } }) => {
@@ -36,7 +38,7 @@ const Blog = ({ blog, onLike = () => { } }) => {
     if (blog.user.username === JSON.parse(window.localStorage.getItem('loggedInUser')).username) {
       return (
         <div>
-          <button id={`${blog.title} remove`} onClick={handleDeleteClick}>remove</button>
+          <Button variant='danger' id={`${blog.title} remove`} onClick={handleDeleteClick}>remove</Button>
         </div>
       )
     }
@@ -50,9 +52,9 @@ const Blog = ({ blog, onLike = () => { } }) => {
 
           <div>{blog.url}</div>
           <div>likes: {blog.likes}</div>
-          <button onClick={handleLikeClick}>like</button>
+          <Button variant='success' onClick={handleLikeClick}>like</Button>
           <br />
-          Created by: {blog.user?.username}
+          Added by: {blog.user.username}
           {/* huom syntaksi ^ */}
           {renderRemoveButton()}
         </div>
