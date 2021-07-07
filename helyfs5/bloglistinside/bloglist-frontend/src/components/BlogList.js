@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import ListGroup from 'react-bootstrap/ListGroup'
+import Button from 'react-bootstrap/Button'
+
 import Blog from './Blog'
 import { likeBlog, logoutUser } from '../actions'
 
@@ -40,9 +43,11 @@ const BlogList = ({ user }) => {
 
     return (
         <div>
-            <h2>blogs</h2>
-            {renderContent()}
-            <button onClick={handleShowClick}>{showComponent ? 'hide blogs' : 'show blogs'}</button>
+            <h2>Bloglist</h2>
+            <ListGroup>
+                {renderContent()}
+            </ListGroup>
+            <Button variant='secondary' onClick={handleShowClick}>{showComponent ? 'hide blogs' : 'show blogs'}</Button>
         </div>
     )
 }

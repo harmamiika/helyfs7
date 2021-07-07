@@ -12,9 +12,10 @@ const getConfig = () => {
   }
 }
 
-const getAll = () => {
-  const request = axios.get(baseUrl)
-  return request.then(response => response.data)
+const getAll = async () => {
+  const response = await axios.get(baseUrl)
+  console.log(response, 'response')
+  return response.data
 }
 
 const create = async newObject => {

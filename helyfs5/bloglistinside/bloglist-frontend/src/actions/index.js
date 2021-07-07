@@ -48,7 +48,8 @@ export const logoutUser = () => {
 
 // Blogs
 export const getAllBlogs = () => async dispatch => {
-    const allBlogs = await blogsService.getAll()
+    const allBlogs = await blogsService.getAll().catch(e => console.log(e, 'e'))
+    console.log(allBlogs, 'allBlogs')
     dispatch({
         type: 'GET_ALL_BLOGS',
         payload: allBlogs

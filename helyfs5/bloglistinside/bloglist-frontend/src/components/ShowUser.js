@@ -6,7 +6,7 @@ const ShowUser = ({ userToShow }) => {
     const renderBlogs = () => {
         return userToShow.blogs.map(blog => {
             return (
-                <div>
+                <div key={blog.id}>
                     {blog.title}
                 </div>
             )

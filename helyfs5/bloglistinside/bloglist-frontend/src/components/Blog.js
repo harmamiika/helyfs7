@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import ListGroup from 'react-bootstrap/ListGroup'
+import Button from 'react-bootstrap/Button'
+
 import { deleteBlog, displayNotification } from '../actions'
 
 const Blog = ({ blog, onLike = () => { } }) => {
@@ -22,12 +25,8 @@ const Blog = ({ blog, onLike = () => { } }) => {
     }
   }
 
-  const blogStyle = {
-    paddingTop: 10,
-    paddingLeft: 2,
-    border: 'solid',
-    borderWidth: 1,
-    marginBottom: 5
+  const blogTitleStyle = {
+    paddingRight: 10
   }
 
   const renderRemoveButton = () => {
@@ -53,7 +52,7 @@ const Blog = ({ blog, onLike = () => { } }) => {
           <div>likes: {blog.likes}</div>
           <button onClick={handleLikeClick}>like</button>
           <br />
-          {blog.user?.username}
+          Created by: {blog.user?.username}
           {/* huom syntaksi ^ */}
           {renderRemoveButton()}
         </div>
@@ -63,11 +62,11 @@ const Blog = ({ blog, onLike = () => { } }) => {
   }
 
   return (
-    <div style={blogStyle}>
-      <div><Link to={`/blogs/${blog.id}`}>{blog.title}</Link> {blog.author}
-        <button id={blog.title} onClick={() => setShowDetail(!showDetail)}>{!showDetail ? 'view' : 'hide'}</button></div>
+    <ListGroup.Item>
+      <div><Link style={blogTitleStyle} to={`/blogs/${blog.id}`}>{blog.title}</Link>
+        <Button variant='light' id={blog.title} onClick={() => setShowDetail(!showDetail)}>{!showDetail ? 'view' : 'hide'}</Button></div>
       {renderDetail()}
-    </div>
+    </ListGroup.Item>
   )
 }
 

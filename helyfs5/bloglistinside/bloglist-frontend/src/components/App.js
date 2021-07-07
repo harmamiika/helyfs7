@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
+import Container from 'react-bootstrap/Container'
 
 import Login from './Login'
 import BlogList from './BlogList'
@@ -17,7 +17,7 @@ const App = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user)
   const userList = useSelector(state => state.userList)
-  // const blogsList = useSelector(state => state.blogs)
+  const blogsList = useSelector(state => state.blogs)
 
   useEffect(() => {
     dispatch(getAllBlogs()).catch(e => console.log(e, 'cant get blogs'))
@@ -40,41 +40,32 @@ const App = () => {
     dispatch(displayNotification(`a new blog: ${newBlog.title} by ${newBlog.author} added`, 'success'))
   }
 
-
-  // const displayContent = () => {
-  //   return user === null ?
-  //     <Login /> :
-  //     <div>
-  //       <Header />
-  //       <BlogList user={user} />
-  //       <CreateBlog onCreate={onCreate} />
-  //     </div>
-  // }
-
-  const match = useRouteMatch('/users/:id')
+  let match = useRouteMatch('/users/:id')
   const userToShow = match
     ? userList.find(user => user.id.toString() === match.params.id.toString())
     : null
 
-  // const match2 = useRouteMatch('/blogs/:id')
-  // const blogToShow = match2
-  //   ? blogsList.find(blog => blog.id.toString() === match2.params.id.toString())
-  //   : null
+  match = useRouteMatch('/blogs/:id')
+  const blogToShow = match
+    ? blogsList.find(blog => blog.id.toString() === match.params.id.toString())
+    : null
+
 
   if (user === null) {
     return (
-      <div>
+      <Container>
         <Notification />
         <Login />
-      </div>
+      </Container>
     )
   }
 
   return (
     <div>
-      <div>
-        <Header />
-        <Notification />
+      <Header />
+      <Notification />
+      <Container>
+
 
         <Switch>
 
@@ -86,6 +77,9 @@ const App = () => {
             <ShowUsers />
           </Route>
 
+          <Route path='/blogs/:id'>
+            <ShowBlog blogToShow={blogToShow} />
+          </Route>
 
           <Route path='/'>
             <BlogList user={user} />
@@ -93,14 +87,20 @@ const App = () => {
           </Route>
 
         </Switch>
-      </div>
+      </Container>
     </div>
   )
 }
 
-{/* <Route path='/blogs/:id'>
-<ShowBlog blogToShow={blogToShow} />
-</Route> */}
-
-
 export default App
+
+
+  // const displayContent = () => {
+  //   return user === null ?
+  //     <Login /> :
+  //     <div>
+  //       <Header />
+  //       <BlogList user={user} />
+  //       <CreateBlog onCreate={onCreate} />
+  //     </div>
+  // }

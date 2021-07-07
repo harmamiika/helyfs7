@@ -7,7 +7,10 @@ const ShowBlog = ({ blogToShow }) => {
     }
     return (
         <div>
-            <h1>{blogToShow}</h1>
+            <h1>{blogToShow.title}</h1>
+            <div>{blogToShow.url}</div>
+            <div>Likes: {blogToShow.likes}</div>
+            <div>Made by: {blogToShow.author}</div>
         </div>
     )
 }
