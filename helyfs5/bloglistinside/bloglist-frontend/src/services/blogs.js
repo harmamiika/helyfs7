@@ -12,6 +12,13 @@ const getConfig = () => {
   }
 }
 
+const addComment = async (id, comment) => {
+  console.log(comment, 'comment')
+  const response = await axios.post(`${baseUrl}/${id}/comments`, comment, getConfig()).catch(e => console.log(e, 'add comment error'))
+  console.log(response, 'response')
+  return response.data
+}
+
 const getAll = async () => {
   const response = await axios.get(baseUrl)
   console.log(response, 'response')
@@ -38,4 +45,4 @@ const remove = async (id) => {
   return response.data
 }
 
-export default { getAll, create, setToken, update, remove }
+export default { getAll, create, setToken, update, remove, addComment }

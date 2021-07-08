@@ -85,6 +85,17 @@ export const likeBlog = (blog) => async dispatch => {
     })
 }
 
+// comment
+export const addBlogComment = (id, comment) => async dispatch => {
+    console.log(id, comment, 'id comment')
+    const response = await blogsService.addComment(id, comment).catch(e => console.log(e, 'addcomment error'))
+    console.log(response, 'data')
+    dispatch({
+        type: 'ADD_BLOG_COMMENT',
+        payload: response
+    })
+}
+
 
 
 let notificationTimeout

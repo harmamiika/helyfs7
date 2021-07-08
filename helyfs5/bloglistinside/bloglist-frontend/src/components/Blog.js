@@ -13,6 +13,7 @@ const Blog = ({ blog, onLike = () => { } }) => {
   const [showDetail, setShowDetail] = useState(false)
   const dispatch = useDispatch()
 
+
   const handleLikeClick = () => {
     onLike(blog.likes + 1)
     dispatch(displayNotification(`liked blog: ${blog.title}`))
