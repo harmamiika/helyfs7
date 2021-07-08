@@ -15,7 +15,7 @@ export const blogsReducer = (state = [], action) => {
         case 'LIKE_A_BLOG':
             return state.map(blog => blog.id === action.payload.id ? action.payload : blog)
         case 'ADD_BLOG_COMMENT':
-            return state
+            return state.map(blog => blog.id === action.payload.blog ? { ...blog, comments: blog.comments.concat(action.payload) } : blog)
         default:
             return state
     }

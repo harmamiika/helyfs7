@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -8,20 +9,31 @@ import Spinner from 'react-bootstrap/Spinner'
 import ShowBlogComments from './ShowBlogComments'
 
 const ShowBlog = ({ blogToShow }) => {
-    console.log(blogToShow, 'blogtoshow')
+
+    // console.log(blogToShowPasser, 'blogtoshowpasser')
+
+    // const blogToShow = useSelector(state => state.blogs.find(blog => blog.id === blogToShowPasser?.id)
+
+    // console.log(blogToShow, 'blogtoshow')
 
     const titleStyle = {
         alignContent: 'center'
     }
 
     const spinnerStyle = {
-        justifyContent: 'center'
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 
     if (!blogToShow) {
-        return <Spinner style={spinnerStyle} animation="border" role="status">
-            <span className="sr-only">Loading...</span>
-        </Spinner>
+        return (
+            <div style={spinnerStyle}>
+                <Spinner animation="border" role="status">
+                    <span className="sr-only">Loading...</span>
+                </Spinner>
+            </div>
+        )
     }
     return (
         <Card>
