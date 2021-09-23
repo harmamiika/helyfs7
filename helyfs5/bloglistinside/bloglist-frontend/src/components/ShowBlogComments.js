@@ -31,7 +31,7 @@ const ShowBlogComments = ({ id, comments }) => {
         return <div>
             <Form onSubmit={handleCommentSubmit}>
                 <Form.Label>
-                    Add comment:
+                    <h3>Add comment:</h3>
                 </Form.Label>
                 <Form.Control
                     type='text' value={content} name='content'
@@ -55,7 +55,7 @@ const ShowBlogComments = ({ id, comments }) => {
 
     return (
         <div>
-            <h3>Comments</h3>
+            <h3>Comments:</h3>
             {renderComments()}
             {renderAddComment()}
         </div>

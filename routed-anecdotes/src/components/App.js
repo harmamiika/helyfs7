@@ -31,7 +31,7 @@ const App = () => {
 
   const [notification, setNotification] = useState('')
 
-  const notifyWith = (message, type='success') => {
+  const notifyWith = (message, type = 'success') => {
     setNotification({ message, type })
     setTimeout(() => {
       setNotification(null)
@@ -64,33 +64,33 @@ const App = () => {
     : null
 
   return (
-      <div>
-        <Notification notification={notification} />
-        <h1>Software anecdotes</h1>
-        <Menu />
+    <div>
+      <Notification notification={notification} />
+      <h1>Software anecdotes</h1>
+      <Menu />
 
-        <Switch>
+      <Switch>
 
-          <Route path='/about'>
-            <About />
-          </Route>
+        <Route path='/about'>
+          <About />
+        </Route>
 
-          <Route path='/create'>
-            <CreateNew addNew={addNew} />
-          </Route>
+        <Route path='/create'>
+          <CreateNew addNew={addNew} />
+        </Route>
 
-          <Route path='/anecdotes/:id' > 
-            <AnecdoteShow anecdote={anecdote} />
-          </Route>
+        <Route path='/anecdotes/:id' >
+          <AnecdoteShow anecdote={anecdote} />
+        </Route>
 
-          <Route path='/'>
-            <AnecdoteList anecdotes={anecdotes} />
-          </Route>
+        <Route path='/'>
+          <AnecdoteList anecdotes={anecdotes} />
+        </Route>
 
-        </Switch>
+      </Switch>
 
-        <Footer />
-      </div>
+      <Footer />
+    </div>
   )
 }
 

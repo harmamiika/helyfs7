@@ -39,7 +39,7 @@ const ShowBlog = ({ blogToShow }) => {
         <Card>
             <Card.Body>
                 <Card.Title style={titleStyle}><h2>{blogToShow.title}</h2></Card.Title>
-                <Card.Text><a href={`${blogToShow.url}`}>{blogToShow.url}</a></Card.Text>
+                <Card.Text><a href={`${blogToShow.url}`} target='_blank'>{blogToShow.url}</a></Card.Text>
                 <Card.Text>Likes: {blogToShow.likes}</Card.Text>
                 <Card.Text>Author: {blogToShow.author}</Card.Text>
 

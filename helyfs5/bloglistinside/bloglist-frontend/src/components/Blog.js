@@ -50,7 +50,6 @@ const Blog = ({ blog, onLike = () => { } }) => {
     if (showDetail) {
       return (
         <div>
-
           <div>{blog.url}</div>
           <div>likes: {blog.likes}</div>
           <Button variant='success' onClick={handleLikeClick}>like</Button>
